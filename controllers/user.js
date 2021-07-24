@@ -53,9 +53,10 @@ const userPost = async (req, res = response) => {
 
 const userDelete = async (req, res = response) => {
     const { id } = req.params;
+    const user = req.user;
     //const user = await User.findByIdAndDelete(id);
-    const user = await User.findByIdAndUpdate(id, { status: false });
-    res.json(user)
+    const updatedUser = await User.findByIdAndUpdate(id, { status: false });
+    res.json({ updatedUser, user })
 }
 
 module.exports = {

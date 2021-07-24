@@ -34,7 +34,8 @@ const UserSchema = Schema({
 
 // Para que solo se muestren los campos que yo deseo
 UserSchema.methods.toJSON = function () {
-    const { __v, password, ...rest } = this.toObject();
+    const { __v, password, _id, ...rest } = this.toObject();
+    rest.id = _id;
     return rest;
 }
 
